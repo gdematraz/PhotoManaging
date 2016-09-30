@@ -29,7 +29,7 @@ $title = $logged
     <link href="Resources/css/bootstrap-theme.css" rel="stylesheet">
   </head>
   <body>
-  
+
 
   <div class="container">
     <div class="row">
