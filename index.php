@@ -29,31 +29,27 @@ $title = $logged
     <link href="Resources/css/bootstrap-theme.css" rel="stylesheet">
   </head>
   <body>
-
-
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
+        <h1>PhotoManaging</h1>
     <?php if (mb_strlen($flash) > 0): ?>
       <div class="flash">
         <?= $flash ?>
       </div>
     <?php endif ?>
-    <p>
-      <a href="secret.php">Page secrète</a>
-    </p>
 
     <?php
     ?>
     <?php if ($logged): ?>
-      <h1>Bonjour <?= $_SESSION['user']['firstname'] ?> <?= $_SESSION['user']['lastname'] ?></h1>
+      <b>Bonjour <?= $_SESSION['user']['firstname'] ?> <?= $_SESSION['user']['lastname'] ?></b>
       <p>
         <?php
         ?>
         Vous êtes loggué en tant que <?= $_SESSION['user']['username'] ?>
       </p>
       <p>
-        <a href="logout.php">Logout</a>
+        <a class="btn btn-default" href="logout.php">Logout</a>
       </p>
     <?php else: ?>
       <?php
@@ -69,6 +65,7 @@ $title = $logged
             </div>
             <div class="form-group">
               <input type="submit" class="btn btn-default" name="submit" value="Log me in">
+              <a class="btn btn-default" href="createuser.php">Add new user</a>
             </div>
           </form>
         </div>

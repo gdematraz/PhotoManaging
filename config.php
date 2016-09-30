@@ -9,5 +9,5 @@
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
-define('DB_DATABASE', 'db_photo_managing');
+define('DB_DATABASE', 'photo_managing');
 

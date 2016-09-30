@@ -8,12 +8,12 @@ if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
 
-$sql = "INSERT INTO user (username, password, firstname, lastname) VALUES ('test', '1233', 'test', 'test')";
+$sql = "INSERT INTO user (username, password, firstname, lastname) VALUES ('gdematraz', '1234', 'Grégoire', 'Dématraz')";
 
 if ($db->query($sql) === TRUE) {
     echo "Utilisateur ajouté !";
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $sql . "<br>" . $db->error;
 }
 
 $db->close();
