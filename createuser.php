@@ -2,7 +2,16 @@
 <?php
 
 include 'config.php';
+
+$db = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
+
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +30,7 @@ include 'config.php';
         <div class="col-md-4 col-md-offset-4">
             <h1>PhotoManaging</h1>
             <h2>Add new user</h2>
-            <form class="" action="login.php" method="post">
+            <form class="" action="adduser.php" method="post">
                 <div class="form-group">
                     <label>Username</label>
                     <input class="form-control" type="text" name="username" value="">

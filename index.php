@@ -46,7 +46,7 @@ $title = $logged
       <p>
         <?php
         ?>
-        Vous êtes loggué en tant que <?= $_SESSION['user']['username'] ?>
+        You are logged as <?= $_SESSION['user']['username'] ?>
       </p>
       <p>
         <a class="btn btn-default" href="logout.php">Logout</a>
