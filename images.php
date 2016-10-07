@@ -11,8 +11,8 @@ if (isset($_SESSION['flash'])) {
     $_SESSION['flash'] = "";
     unset($_SESSION['flash']);
 }
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,16 +50,14 @@ if (isset($_SESSION['flash'])) {
             <?php
             ?>
             <?php if ($logged): ?>
-                <b>Bonjour <?= $_SESSION['user']['firstname'] ?> <?= $_SESSION['user']['lastname'] ?></b>
                 <p>
-                    <?php
-                    ?>
-                    You are logged as <?= $_SESSION['user']['username'] ?>
+                     You are logged as <?= $_SESSION['user']['username']?>
                 </p>
                 <p>
                     <a class="btn btn-default" href="logout.php">Logout</a>
                 </p>
             <?php else: ?>
+
             <?php
             ?>
             <form class="" action="login.php" method="post">
