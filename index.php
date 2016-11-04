@@ -50,7 +50,7 @@ if (isset($_SESSION['flash'])) {
             <?php
             ?>
             <?php if ($logged): ?>
-                <b>Bonjour <?= $_SESSION['user']['firstname'] ?> <?= $_SESSION['user']['lastname'] ?></b>
+                <b>Hello <?= $_SESSION['user']['firstname'] ?> <?= $_SESSION['user']['lastname'] ?></b>
                 <p>
                     <?php
                     ?>
