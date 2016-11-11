@@ -2,6 +2,16 @@
 
 include 'config.php';
 
+?>
+
+<style>
+    .im  {
+        width: 150px;
+    }
+</style>
+
+<?php
+
 if (isset($_POST['submit'])) {
     $name = $_FILES['file_upload']['name'];
     $tmp_name = $_FILES['file_upload']['tmp_name'];
@@ -18,7 +28,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
-$result = mysqli_query($con , "SELECT FROM image");
+$result = mysqli_query($con , "SELECT * FROM image");
 
 while($row = mysqli_fetch_array($result)) {
     echo "<img src=".$row['p_img']." &nbsp; class='im'>";

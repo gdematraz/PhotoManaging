@@ -46,8 +46,6 @@ if ($db->connect_error) {
 
                 <?php if ($logged): ?>
                     <p class="state">
-                        <?php
-                        ?>
                         You are logged as <?= $_SESSION['user']['username']?>
                         </br><a class="btn btn-default" href="logout.php">Logout</a>
                     </p>
