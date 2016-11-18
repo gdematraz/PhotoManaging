@@ -11,6 +11,8 @@ if (isset($_SESSION['flash'])) {
     $_SESSION['flash'] = "";
     unset($_SESSION['flash']);
 }
+
+include 'config.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +26,7 @@ if (isset($_SESSION['flash'])) {
 
     <link href="Resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="Resources/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="Resources/css/Theme.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -37,7 +40,7 @@ if (isset($_SESSION['flash'])) {
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-md-12">
 
             <h1>PhotoManaging</h1>
 
@@ -56,9 +59,30 @@ if (isset($_SESSION['flash'])) {
                 <p>
                     <a class="btn btn-default" href="logout.php">Logout</a>
                 </p>
+                <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="file_upload">File</label>
+                        <input id="file_upload" type="file" name="file_upload" />
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input class="form-control" type="text" id="name" name="name" />
+                    </div>
+                    <button type="submit" class="btn btn-default" name="submit">Upload</button>
+                </form>
+                <div class="row">
+                    <?php
+                    $result = mysqli_query($con , "SELECT * FROM image");
+
+                    while($row = mysqli_fetch_array($result)) {
+                        echo "<div class='col-md-3'><img class='img-gallery' src=".$row['p_img']."></div>";
+                    } ?>
+                </div>
+
             <?php else: ?>
 
             <?php
+                echo '<p>You are not logged</p>';
             ?>
             <form class="" action="login.php" method="post">
                 <div class="form-group">

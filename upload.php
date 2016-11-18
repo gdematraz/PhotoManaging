@@ -2,15 +2,6 @@
 
 include 'config.php';
 
-?>
-
-<style>
-    .im  {
-        width: 150px;
-    }
-</style>
-
-<?php
 
 if (isset($_POST['submit'])) {
     $name = $_FILES['file_upload']['name'];
@@ -26,11 +17,5 @@ if (isset($_POST['submit'])) {
     } else {
         echo 'file not uploaded';
     }
-}
-
-$result = mysqli_query($con , "SELECT * FROM image");
-
-while($row = mysqli_fetch_array($result)) {
-    echo "<img src=".$row['p_img']." &nbsp; class='im'>";
 }
 
