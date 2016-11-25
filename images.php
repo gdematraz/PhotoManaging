@@ -75,7 +75,7 @@ include 'config.php';
                     $result = mysqli_query($con , "SELECT * FROM image");
 
                     while($row = mysqli_fetch_array($result)) {
-                        echo "<div class='col-md-3'><img class='img-gallery' src=".$row['p_img']." title=".$row['p_title']."></div>";
+                        echo "<div class='col-md-3'><a href=".$row['p_img']."><img class='img-gallery' src=".$row['p_img']." title=".$row['p_title']."></a></div>";
                     } ?>
                 </div>
 
