@@ -24,9 +24,11 @@ include 'config.php';
 
     <title>PhotoManaging</title>
 
-    <link href="Resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="Resources/css/bootstrap-theme.css" rel="stylesheet">
+    <!--<link href="Resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Resources/css/bootstrap-theme.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     <link href="Resources/css/Theme.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.min.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -75,7 +77,7 @@ include 'config.php';
                     $result = mysqli_query($con , "SELECT * FROM image");
 
                     while($row = mysqli_fetch_array($result)) {
-                        echo "<div class='col-md-3'><a href=".$row['p_img']."><img class='img-gallery' src=".$row['p_img']." title=".$row['p_title']."></a></div>";
+                        echo "<div class='col-md-3'><a href=".$row['p_img']." data-toggle=\"lightbox\"><img class='img-gallery' src=".$row['p_img']." title=".$row['p_title']."></a></div>";
                     } ?>
                 </div>
 
@@ -105,8 +107,9 @@ include 'config.php';
 
 <?php endif ?>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="Resources/js/bootstrap.min.js"></script>
+<!--<script src="Resources/js/bootstrap.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.0.0/ekko-lightbox.min.js"></script>
+<script src="Resources/js/Theme.js"></script>
 </body>
 </html>
