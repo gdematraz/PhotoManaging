@@ -65,8 +65,8 @@ include 'config.php';
                         <input id="file_upload" type="file" name="file_upload" />
                     </div>
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input class="form-control" type="text" id="name" name="name" />
+                        <label for="customname">Name</label>
+                        <input class="form-control" type="text" id="customname" name="customname" />
                     </div>
                     <button type="submit" class="btn btn-default" name="submit">Upload</button>
                 </form>
@@ -75,7 +75,7 @@ include 'config.php';
                     $result = mysqli_query($con , "SELECT * FROM image");
 
                     while($row = mysqli_fetch_array($result)) {
-                        echo "<div class='col-md-3'><img class='img-gallery' src=".$row['p_img']."></div>";
+                        echo "<div class='col-md-3'><img class='img-gallery' src=".$row['p_img']." title=".$row['p_title']."></div>";
                     } ?>
                 </div>
 
