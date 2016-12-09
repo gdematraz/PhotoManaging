@@ -51,8 +51,6 @@ include 'config.php';
                 </div>
             <?php endif ?>
 
-            <?php
-            ?>
             <?php if ($logged): ?>
                 <p>
                      You are logged as <?= $_SESSION['user']['username']?>
@@ -66,17 +64,40 @@ include 'config.php';
                         <input id="file_upload" type="file" name="file_upload" />
                     </div>
                     <div class="form-group">
-                        <label for="customname">Name</label>
-                        <input class="form-control" type="text" id="customname" name="customname" />
+                        <label for="customName">Name</label>
+                        <input class="form-control" type="text" id="customName" name="customName" />
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select name="category">
+                            <?php
+                                $resultCat = mysqli_query($con, "SELECT * FROM categories");
+
+                                while ($rowCat = mysqli_fetch_array($resultCat)) {
+                                    echo "<option value='"
+                                        . $rowCat['name']
+                                        . "'>"
+                                        . $rowCat['name']
+                                        . "</option>";
+                                };
+                            ?>
+                        </select>
                     </div>
                     <button type="submit" class="btn btn-default" name="submit">Upload</button>
+                    <hr />
                 </form>
                 <div class="row">
                     <?php
-                    $result = mysqli_query($con , "SELECT * FROM image");
+                    $resultIm = mysqli_query($con , "SELECT * FROM image");
 
-                    while($row = mysqli_fetch_array($result)) {
-                        echo "<div class='col-md-3'><a href=".$row['p_img']." class='fancybox' rel='lightbox'><img class='img-gallery' src=".$row['p_img']." title=".$row['p_title']."></a></div>";
+                    while($rowIm = mysqli_fetch_array($resultIm)) {
+                        echo "<div class='col-md-3'><a href="
+                            . $rowIm['p_img']
+                            . " class='fancybox' rel='lightbox'><img class='img-gallery " . $rowIm['p_category'] . "' src="
+                            . $rowIm['p_img']
+                            . " title="
+                            . $rowIm['p_title']
+                            . "></a></div>" ;
                     } ?>
                 </div>
 

@@ -49,7 +49,6 @@ if ($db->connect_error) {
                         You are logged as <?= $_SESSION['user']['username']?>
                         </br><a class="btn btn-default" href="logout.php">Logout</a>
                     </p>
-                <?php else: ?>
 
                 <h2>Add new user</h2>
                 <form class="" action="adduser.php" method="post">
