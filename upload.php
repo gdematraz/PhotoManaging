@@ -16,8 +16,6 @@ if (isset($_POST['submit'])) {
     $upload = move_uploaded_file( $temp_name , $location.$filename);
 
     if ($upload) {
-        echo 'Image uploaded successfully !';
-
         $query = mysqli_query($con , "INSERT INTO image(p_img,p_title,p_category)VALUES('"
             . $target
             . "','"
@@ -29,4 +27,6 @@ if (isset($_POST['submit'])) {
         echo 'file not uploaded';
     }
 }
+
+header('Location: images.php');
 
