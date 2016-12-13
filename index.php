@@ -24,6 +24,7 @@ if (isset($_SESSION['flash'])) {
 
     <link href="Resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="Resources/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="Resources/css/Theme.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -51,17 +52,9 @@ if (isset($_SESSION['flash'])) {
             ?>
             <?php if ($logged): ?>
                 <b>Hello <?= $_SESSION['user']['firstname'] ?> <?= $_SESSION['user']['lastname'] ?></b>
-                <p>
-                    <?php
-                    ?>
-                    You are logged as <?= $_SESSION['user']['username'] ?>
-                </p>
-                <p>
-                    <a class="btn btn-default" href="logout.php">Logout</a>
-                </p>
+
             <?php else: ?>
-            <?php
-            ?>
+
             <form class="" action="login.php" method="post">
                 <div class="form-group">
                     <label>Username</label>
@@ -76,12 +69,23 @@ if (isset($_SESSION['flash'])) {
                     <a class="btn btn-default" href="createuser.php">Add new user</a>
                 </div>
             </form>
+            <?php endif; ?>
         </div>
     </div>
-
 </div>
 
-<?php endif ?>
+<footer>
+    <?php if ($logged): ?>
+        <div class="container">
+            <p>
+                You are logged as <?= $_SESSION['user']['username']?>
+            </p>
+            <p>
+                <a class="btn btn-default" href="logout.php">Logout</a>
+            </p>
+        </div>
+    <?php endif; ?>
+</footer>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

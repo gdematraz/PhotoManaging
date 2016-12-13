@@ -13,3 +13,7 @@ define('DB_DATABASE', 'photo_managing');
 
 $con = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
+}
+

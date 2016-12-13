@@ -3,10 +3,8 @@
 include 'config.php';
 
 if (isset($_POST['submit'])) {
-    $db = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
+    if ($con->connect_error) {
+        die("Connection failed: " . $con->connect_error);
     }
 
     $username = $_POST['username'];
@@ -16,12 +14,12 @@ if (isset($_POST['submit'])) {
 
     $sql = "INSERT INTO user (username, password, firstname, lastname) VALUES ('$username', '$password', '$firstname', '$lastname')";
 
-    if ($db->query($sql) === TRUE) {
+    if ($con->query($sql) === TRUE) {
         echo "Utilisateur ajouté !";
     } else {
-        echo "Error: " . $sql . "<br>" . $db->error;
+        echo "Error: " . $sql . "<br>" . $con->error;
     }
-    $db->close();
+    $con->close();
 }
 
 header('Location: index.php');

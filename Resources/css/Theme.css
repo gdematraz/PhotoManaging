@@ -1,4 +1,11 @@
 .img-gallery {
-    width: 100%;
+    max-width: 200px;
     margin-bottom: 15px;
+}
+
+footer {
+    background-color: #0f0f0f;
+    color: #FFF;
+    padding: 30px;
+    margin-top: 15px;
 }
