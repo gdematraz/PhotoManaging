@@ -4,15 +4,8 @@ session_start();
 
 $logged = isset($_SESSION['user']);
 
-$message = '';
-if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
-
-    $_SESSION['message'] = "";
-    unset($_SESSION['message']);
-}
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +13,7 @@ if (isset($_SESSION['message'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>PhotoManaging</title>
+    <title>My account</title>
 
     <link href="Resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="Resources/css/bootstrap-theme.css" rel="stylesheet">
@@ -30,9 +23,9 @@ if (isset($_SESSION['message'])) {
 <nav class="navbar navbar-default">
     <div class="container">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Home Page</a></li>
+            <li><a href="index.php">Home Page</a></li>
             <li><a href="images.php">Images gallery</a></li>
-            <li><a href="account.php">My Account</a></li>
+            <li class="active"><a href="account.php">My Account</a></li>
         </ul>
     </div>
 </nav>
@@ -40,34 +33,33 @@ if (isset($_SESSION['message'])) {
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
 
-            <h1>PhotoManaging</h1>
-
-            <?php if (mb_strlen($message) > 0): ?>
-                <div class="message">
-                    <?= $message ?>
-                </div>
+            <h1>My account</h1>
+            <?php if ($logged): ?>
+            <p>Hello <?= $_SESSION['user']['firstname'] ?> <?= $_SESSION['user']['lastname'] ?></p>
             <?php endif ?>
 
-            <?php if ($logged): ?>
-                <b>Hello <?= $_SESSION['user']['firstname'] ?> <?= $_SESSION['user']['lastname'] ?></b>
-
-            <?php else: ?>
-
-            <form class="" action="login.php" method="post">
+            <form class="" action="edituser.php" method="post">
                 <div class="form-group">
                     <label>Username</label>
-                    <input class="form-control" type="text" name="username" value="">
+                    <input class="form-control" type="text" name="username" value="<?php echo $_SESSION['user']['username'] ?>">
                 </div>
                 <div class="form-group">
-                    <label>password</label>
+                    <label>New Password</label>
                     <input class="form-control" type="password" name="password" value="">
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-default" name="submit" value="Log me in">
-                    <a class="btn btn-default" href="createuser.php">Add new user</a>
+                    <label>First Name</label>
+                    <input class="form-control" type="text" name="firstname" value="<?php echo $_SESSION['user']['firstname'] ?>">
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" type="text" name="lastname" value="<?php echo $_SESSION['user']['lastname'] ?>">
+                </div>
+                <input name="userid" type="hidden" value="<?php echo $_SESSION['user']['id'] ?>">
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" name="submit" value="Edit">
                 </div>
             </form>
-            <?php endif; ?>
         </div>
     </div>
 </div>

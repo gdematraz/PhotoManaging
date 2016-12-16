@@ -4,14 +4,6 @@ session_start();
 
 $logged = isset($_SESSION['user']);
 
-$flash = '';
-if (isset($_SESSION['flash'])) {
-    $flash = $_SESSION['flash'];
-
-    $_SESSION['flash'] = "";
-    unset($_SESSION['flash']);
-}
-
 include 'config.php';
 ?>
 
@@ -34,8 +26,8 @@ include 'config.php';
     <div class="container">
         <ul class="nav navbar-nav">
             <li><a href="index.php">Home Page</a></li>
-            <li><a href="createuser.php">Add new user</a></li>
-            <li><a href="images.php">Images gallery</a></li>
+            <li class="active"><a href="images.php">Images gallery</a></li>
+            <li><a href="account.php">My Account</a></li>
         </ul>
     </div>
 </nav>
@@ -44,12 +36,6 @@ include 'config.php';
         <div class="col-md-12">
 
             <h1>Images Gallery</h1>
-
-            <?php if (mb_strlen($flash) > 0): ?>
-            <div class="flash">
-                <?= $flash ?>
-            </div>
-            <?php endif ?>
 
             <?php if ($logged): ?>
             <form action="upload.php" method="post" enctype="multipart/form-data">

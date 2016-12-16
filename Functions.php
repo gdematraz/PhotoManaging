@@ -2,6 +2,8 @@
 
 include 'config.php';
 
-function getCategories() {
-    
+class image {
+    function addNewImage() {
+
+    }
 }
