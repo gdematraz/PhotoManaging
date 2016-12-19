@@ -5,6 +5,11 @@ session_start();
 $logged = isset($_SESSION['user']);
 
 include 'config.php';
+
+$notConnectedMessage = '';
+if(!$logged) {
+    $notConnectedMessage = 'You are not connected';
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +36,7 @@ include 'config.php';
         </ul>
     </div>
 </nav>
-<div class="container">
+<div class="container" id="mainContent">
     <div class="row">
         <div class="col-md-12">
 
@@ -103,8 +108,7 @@ include 'config.php';
             </div>
         </div>
         <?php else: ?>
-
-        <p>You are not logged</p>
+        <?php echo $notConnectedMessage ?>
         <form class="" action="login.php" method="post">
             <div class="form-group">
                 <label>Username</label>

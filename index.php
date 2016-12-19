@@ -29,14 +29,16 @@ if (isset($_SESSION['message'])) {
 <body>
 <nav class="navbar navbar-default">
     <div class="container">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav"> 
             <li class="active"><a href="index.php">Home Page</a></li>
+            <?php if ($logged): ?>
             <li><a href="images.php">Images gallery</a></li>
             <li><a href="account.php">My Account</a></li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>
-<div class="container">
+<div class="container" id="mainContent">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
 

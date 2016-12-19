@@ -7,20 +7,22 @@ if (isset($_POST['submit'])) {
         die("Connection failed: " . $con->connect_error);
     }
 
-    $username = $_POST['username'];
     $password = $_POST['password'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $id = $_POST['userid'];
 
     $sql = "UPDATE user ";
-    $sql .= "SET username = '$username', password = '$password', firstname = '$firstname', lastname = '$lastname' ";
+    $sql .= "SET password = '$password', firstname = '$firstname', lastname = '$lastname' ";
     $sql .= "WHERE id = $id";
+
+    $errorMessage = '';
 
     if ($con->query($sql) === TRUE) {
         echo "User modified successfully !";
     } else {
-        echo "Error: " . $sql . "<br>" . $con->error;
+        $errorMessage = "Error: " . $sql . "<br>" . $con->error;
+        echo $errorMessage;
     }
     $con->close();
 }

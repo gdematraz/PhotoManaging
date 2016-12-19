@@ -2,7 +2,13 @@
 
 session_start();
 
+
 $logged = isset($_SESSION['user']);
+
+$notConnectedMessage = '';
+if(!$logged) {
+    $notConnectedMessage = 'You are not connected';
+}
 
 ?>
 
@@ -29,37 +35,51 @@ $logged = isset($_SESSION['user']);
         </ul>
     </div>
 </nav>
-<div class="container">
+<div class="container" id="mainContent">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
 
             <h1>My account</h1>
             <?php if ($logged): ?>
             <p>Hello <?= $_SESSION['user']['firstname'] ?> <?= $_SESSION['user']['lastname'] ?></p>
-            <?php endif ?>
 
             <form class="" action="edituser.php" method="post">
+                <h2><?php echo $_SESSION['user']['username'] ?></h2>
+
                 <div class="form-group">
-                    <label>Username</label>
-                    <input class="form-control" type="text" name="username" value="<?php echo $_SESSION['user']['username'] ?>">
+                    <label for="password">New Password</label>
+                    <input id="password" class="form-control" type="password" name="password" value="">
                 </div>
                 <div class="form-group">
-                    <label>New Password</label>
-                    <input class="form-control" type="password" name="password" value="">
+                    <label for="firstname">First Name</label>
+                    <input id="firstname" class="form-control" type="text" name="firstname" value="<?php echo $_SESSION['user']['firstname'] ?>">
                 </div>
                 <div class="form-group">
-                    <label>First Name</label>
-                    <input class="form-control" type="text" name="firstname" value="<?php echo $_SESSION['user']['firstname'] ?>">
-                </div>
-                <div class="form-group">
-                    <label>Last Name</label>
-                    <input class="form-control" type="text" name="lastname" value="<?php echo $_SESSION['user']['lastname'] ?>">
+                    <label for="lastname">Last Name</label>
+                    <input id="lastname" class="form-control" type="text" name="lastname" value="<?php echo $_SESSION['user']['lastname'] ?>">
                 </div>
                 <input name="userid" type="hidden" value="<?php echo $_SESSION['user']['id'] ?>">
                 <div class="form-group">
                     <input type="submit" class="btn btn-default" name="submit" value="Edit">
                 </div>
             </form>
+            <?php else: ?>
+            <p><?php echo $notConnectedMessage ?></p>
+            <form class="" action="login.php" method="post">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input class="form-control" type="text" name="username" value="">
+                </div>
+                <div class="form-group">
+                    <label>password</label>
+                    <input class="form-control" type="password" name="password" value="">
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default" name="submit" value="Log me in">
+                    <a class="btn btn-default" href="createuser.php">Add new user</a>
+                </div>
+            </form>
+            <?php endif;?>
         </div>
     </div>
 </div>

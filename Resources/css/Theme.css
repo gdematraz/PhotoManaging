@@ -4,10 +4,15 @@
 }
 
 footer {
-    background-color: #0f0f0f;
+    background-color: #3c3c3c;
     color: #FFF;
     padding: 30px;
     margin-top: 15px;
     position: fixed;
     bottom: 0;
+    width: 100%;
+}
+
+#mainContent {
+    margin-bottom: 130px;
 }
