@@ -6,6 +6,8 @@ session_start();
 
 $logged = isset($_SESSION['user']);
 
+include 'adduser.php';
+
 ?>
 
 
@@ -39,12 +41,12 @@ $logged = isset($_SESSION['user']);
                 <h1>PhotoManaging</h1>
 
 
-                <?php if ($logged): ?>
+                <?php if ($logged) { ?>
                 <h2>Add new user</h2>
-                <form class="" action="adduser.php" method="post">
+                <form class="" action="createuser.php" method="post">
                     <div class="form-group">
                         <label>Username</label>
-                        <input class="form-control" type="text" name="username" value="">
+                        <input class="form-control <?=($user->getError('username') ? 'error' : '')?>" type="text" name="username" value="<?=$user->getUsername()?>">
                     </div>
                     <div class="form-group">
                         <label>Password</label>
@@ -62,7 +64,7 @@ $logged = isset($_SESSION['user']);
                         <input type="submit" class="btn btn-default" name="submit" value="Create user">
                     </div>
                 </form>
-                    <?php else: ?>
+                    <?php } else { ?>
 
                     <p>You are not logged</p>
                     <form class="" action="login.php" method="post">
@@ -80,7 +82,7 @@ $logged = isset($_SESSION['user']);
                         </div>
                     </form>
 
-                <?php endif; ?>
+                <?php } ?>
             </div>
         </div>
     </div>

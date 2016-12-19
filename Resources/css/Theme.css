@@ -16,3 +16,7 @@ footer {
 #mainContent {
     margin-bottom: 130px;
 }
+
+.form-control.error {
+    border-color: red;
+}

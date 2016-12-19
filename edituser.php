@@ -3,9 +3,6 @@
 include 'config.php';
 
 if (isset($_POST['submit'])) {
-    if ($con->connect_error) {
-        die("Connection failed: " . $con->connect_error);
-    }
 
     $password = $_POST['password'];
     $firstname = $_POST['firstname'];

@@ -5,6 +5,7 @@
  * Date: 09.09.2016
  * Time: 15:23
  */
+include 'User.php';
 
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
@@ -17,3 +18,4 @@ if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
 
+$user = new User($con);
